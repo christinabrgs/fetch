@@ -6,9 +6,12 @@ import {
   Scripts,
   ScrollRestoration,
 } from "react-router";
-
+import { AuthProvider } from "./context/contextProvider";
 import type { Route } from "./+types/root";
 import "./app.css";
+import '@mantine/core/styles.css';
+import { MantineProvider } from '@mantine/core';
+import { DogProvider } from "./context/dogProvider";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -33,7 +36,14 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        {children}
+        <MantineProvider>
+          <AuthProvider>
+            <DogProvider>
+
+              {children}
+            </DogProvider>
+          </AuthProvider>
+        </MantineProvider>
         <ScrollRestoration />
         <Scripts />
       </body>
