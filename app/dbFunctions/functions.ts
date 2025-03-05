@@ -89,7 +89,6 @@ const fetchDogs = async (dogIDs: string[]): Promise<Dog[] | null> => {
 
 const searchDogs = async (filters: DogSearchParams = {}): Promise<SearchResponse | null> => {
     try {
-        console.log(filters);
         let url = 'dogs/search'
 
         if (filters.cursor) {

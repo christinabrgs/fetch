@@ -3,6 +3,7 @@ import { Outlet, useNavigate } from "react-router-dom";
 import { useAuth } from "~/context/contextProvider";
 import { Header } from "~/dashboard/header";
 import '~/app.css'
+import { Footer } from "~/dashboard/footer";
 
 const ProtectedRoute = () => {
   const { user } = useAuth();
@@ -18,6 +19,7 @@ const ProtectedRoute = () => {
     <>
       <Header />
       <Outlet />
+      <Footer />
     </>
   )
 };

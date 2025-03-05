@@ -22,3 +22,9 @@ body {
   font-family: 'Roboto';
   color: white;
 }
+
+
+.header {
+  font-family: 'Arvo';
+  font-weight: 300;
+}

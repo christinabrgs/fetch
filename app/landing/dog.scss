@@ -30,11 +30,13 @@ $z-index-foot-right: 1;
 /*Animation*/
 $duration: 2s;
 $total-steps: 20;
+@use "sass:math";
+
 
 @mixin animate ($name, $animation-set) {
     @keyframes #{$name} {
         @each $interval, $property, $value in $animation-set {
-            #{percentage($interval/$total-steps)} {
+            #{math.percentage(math.div($interval, $total-steps))} {
                 #{$property}:$value
             }
         }
@@ -44,7 +46,7 @@ $total-steps: 20;
 @mixin animate-trans ($name, $animation-set) {
     @keyframes #{$name} {
         @each $interval, $transform in $animation-set {
-            #{percentage($interval/$total-steps)} {
+            #{math.percentage(math.div($interval, $total-steps))} {
                 transform: $transform;
             }
         }
@@ -104,7 +106,7 @@ $animation-ear-set-left:(
 );
 
 $body-shake: 2%;
-$div-6: ($total-steps/6);
+$div-6: math.div($total-steps, 6);
 
 $animation-body-set:(
     ($div-6 * 0): translateY(0px),

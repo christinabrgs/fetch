@@ -87,6 +87,7 @@ export default function Landing() {
               placeholder="Your email"
               leftSection={<IconAt size={16} />}
               value={email}
+              style={{width: 300}}
               onChange={(event) => setEmail(event.currentTarget.value)}
             />
 
@@ -111,7 +112,7 @@ export default function Landing() {
               direction="row"
               align="center"
               justify='center'
-              style={{padding: 30}}
+              style={{padding: 40}}
             >
               <Button type="submit" variant="light" size='xl' color="yellow">
                 Sign In

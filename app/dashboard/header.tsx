@@ -38,24 +38,23 @@ export function Header() {
 
 
   return isMobile ? (
-    <Flex style={styles.flex} direction="column" justify="center" align='center'>
-      <Grid style={styles.mobileGrid} justify="space-around" align="center">
-        <Grid.Col style={[styles.mobileGrid, { justifyContent: "left" }]} span={{ base: 6, md: 6, lg: 6 }}>
-          <IconBone style={{ paddingRight: 5 }} />
-          <Text style={styles.text}>Fetch</Text>
-        </Grid.Col>
-        <Grid.Col style={[styles.mobileGrid, { justifyContent: "right" }]} span={{ base: 6, md: 6, lg: 6 }}>
-          <Burger
-            opened={opened}
-            lineSize={3}
-            onClick={() => {
-              toggle();
-              setIsVisible(!isVisible);
-            }}
-            aria-label="Toggle navigation"
-          />
-        </Grid.Col>
-      </Grid>
+    <Flex style={styles.mobileflex} direction="column" align='center'>
+      <Flex direction="row" justify="space-between" align="center" style={{ width: "100%", padding: 20 }}>
+        <Flex align="center">
+          <IconBone style={{ paddingRight: 5 }} size={30} />
+          <Text>Fetch</Text>
+        </Flex>
+
+        <Burger
+          opened={opened}
+          lineSize={3}
+          onClick={() => {
+            toggle();
+            setIsVisible(!isVisible);
+          }}
+          aria-label="Toggle navigation"
+        />
+      </Flex>
       {isVisible && <div style={styles.navContainer}><Navigation /></div>}
       <Autocomplete
         style={styles.autocomplete}
@@ -71,9 +70,9 @@ export function Header() {
     </Flex>
   ) : (
     <div style={styles.flex}>
-      <Grid style={styles.grid} justify="space-around">
+      <Grid style={styles.grid} justify="space-around" >
         <Grid.Col style={[styles.grid, { justifyContent: "center" }]} span={{ base: 12, md: 6, lg: 2 }}>
-          <IconBone style={{ paddingRight: 5 }} />
+          <IconBone color='#59362a' style={{ paddingRight: 5 }} />
           <Text style={styles.text} size='xl' c=''>Fetch</Text>
         </Grid.Col>
         <Grid.Col style={styles.grid} span={{ base: 12, md: 6, lg: 2 }}>
@@ -82,9 +81,9 @@ export function Header() {
           {/* <SearchAndFilter/> */}
         </Grid.Col>
         <Grid.Col style={styles.grid} span={{ base: 12, md: 6, lg: 2 }}>
-          <Button variant="transparent" color="brown">My Matches</Button>
+          <Button variant="transparent" color="#59362a">My Matches</Button>
 
-          <Button variant='outline' onClick={logoutUser} color="brown"> {user?.name} logout </Button>
+          <Button variant='outline' onClick={logoutUser} color="#59362a"> {user?.name} logout </Button>
         </Grid.Col>
       </Grid>
     </div>
@@ -93,20 +92,26 @@ export function Header() {
 
 const styles: Record<string, React.CSSProperties> = {
   grid: {
-    padding: 10,
+    padding: 13,
     display: "flex",
     justifyContent: "space-evenly",
     alignItems: "center",
+    color: '#59362a'
   },
   flex: {
     position: 'sticky',
     height: 80,
-    background: 'white'
+    background: 'white',
+    top: 0,
+    zIndex: 100
+  },
+  mobileflex: {
+    position: 'sticky',
+    width: '100%'
   },
   mobileGrid: {
     padding: 15,
     display: "flex",
-    justifyContent: "space-evenly",
     alignItems: "center",
   },
   navContainer: {
