@@ -1,16 +1,17 @@
 
-import { Center, Flex } from "@mantine/core";
+import { Center, Flex, Text } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import { useEffect, useState } from "react";
-import dog from '~/dogbanner.png'
+import dog from '~/dogarm.png'
+import '~/app.css'
+import { IconDog } from "@tabler/icons-react";
 
 
 export default function Banner() {
     const [width, setWidth] = useState<string>('50%')
     const [height, setHeight] = useState<string>('50%')
 
-    const isMobile = useMediaQuery("(max-width: 1300px)")
-    const isPhone = useMediaQuery("(max-width: 700px)")
+    const isMobile = useMediaQuery("(max-width: 813px)")
 
 
     useEffect(() => {
@@ -21,29 +22,43 @@ export default function Banner() {
     }, [])
 
     return (
-        isMobile ? (
-            isPhone ? ( <Center style={{ background: 'white', height: '30vh' }}>
-                <img
-                    style={{ height: '100%' }}
-                    src={dog}
-                    width='88%'
-                    alt="dog" />
-            </Center>) : (
-            <Center style={{ background: 'white', height: '50%' }}>
-                <img
-                    style={{ height: '100%' }}
-                    src={dog}
-                    width='80%'
-                    alt="dog" />
-            </Center>)
-        )
-            : (
-                <Flex justify='center' align='end' style={{ background: 'white', height: '60vh' }}>
-                    <img
-                        style={{ height: '90%' }}
-                        src={dog}
-                        width='50%'
-                        alt="dog" />
+        isMobile ?
+            (<Flex justify='center' align='center' style={{ backgroundImage: `url(${dog})`, height: '70vh', backgroundPosition: 'center' }}>
+                <Flex
+                    justify='center'
+                    align='center'
+                    direction='row'
+                    style={{
+                        background: `rgba(0, 0, 0, 0.3)`,
+                        width: '100%',
+                        height: '100%'
+                    }}
+                >
+                    <Text style={{ fontFamily: 'Sour Gummy', fontWeight: '800', color: 'white', fontSize: 20 }}>
+                        Let's Find Your Forever Friend
+                    </Text>
+                </Flex>
+            </Flex>)
+            :
+            (
+                <Flex justify='center' align='center' style={{ backgroundImage: `url(${dog})`, height: '80vh', backgroundPosition: 'center' }}>
+                    <Flex
+                        justify='center'
+                        align='center'
+                        direction='column'
+                        style={{
+                            background: `rgba(0, 0, 0, 0.3)`,
+                            width: '100%',
+                            height: '100%'
+                        }}
+                    >
+                        <Text style={{ fontFamily: 'Sour Gummy', fontWeight: '800', color: 'white', fontSize: 50 }}>
+                            Let's Find You a Forever Friend
+                        </Text>
+                        <Text style={{ fontFamily: 'Roboto', fontWeight: '400', color: 'white', fontSize: 25 }}>
+                            We help connect good humans to good dogs.
+                        </Text>
+                    </Flex>
                 </Flex>
             )
     )

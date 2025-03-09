@@ -82,7 +82,7 @@ const fetchDogs = async (dogIDs: string[]): Promise<Dog[] | null> => {
         return response.json()
     }
     catch (error) {
-        console.error('failed to fetch dogs')
+        console.error('failed to fetch dogs', error)
         return null
     }
 }
@@ -120,11 +120,33 @@ const searchDogs = async (filters: DogSearchParams = {}): Promise<SearchResponse
         return response.json()
     }
     catch (error) {
-        console.error('failed to search dogs')
+        console.error('failed to search dogs', error)
         return null
     }
 }
 
+
+const getMatch = async (dogIDs: string[]): Promise<string[] | null> => {
+    try {
+        const response = await fetch(`${baseURL}/dogs/match`, {
+            method: "POST",
+            headers: { "Content-Type": 'application/json' },
+            credentials: 'include',
+            body: JSON.stringify(dogIDs)
+        })
+
+        if (!response.ok) {
+            throw new Error('dog search failure')
+        }
+
+        return response.json()
+
+    }
+    catch (error) {
+        console.error('failed to find a match', error)
+        return null
+    }
+}
 
 
 export { fetchUserData, logoutUser, fetchDogBreeds, fetchDogs, searchDogs }

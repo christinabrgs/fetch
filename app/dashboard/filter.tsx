@@ -16,8 +16,8 @@ export default function Filter() {
                     backgroundImage:
                     `linear-gradient(
                      to bottom,
-                     #8d5a47 0%,
-                     #8d5a47 50%, 
+                     #58362a 0%,
+                     #58362a 50%, 
                      #fffaf5 50%, 
                      #fffaf5 100%)`,
                     width: '100%',
@@ -29,7 +29,7 @@ export default function Filter() {
     )
 }
 
-
+// 8d5a47
 const styles = {
     text: {
         fontFamily: 'Arvo',
