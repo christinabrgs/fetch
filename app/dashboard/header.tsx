@@ -3,7 +3,7 @@ import { Grid, Button, Autocomplete, Text, Flex, Burger } from "@mantine/core"
 import { useMediaQuery, useDisclosure } from "@mantine/hooks"
 import { useEffect, useState } from "react"
 import { Navigation } from "./navigation"
-import { useAuth } from "~/context/contextProvider"
+import { useAuth } from "~/utilities/context/contextProvider"
 import { useNavigate } from "react-router"
 import '~/app.css'
 
@@ -14,7 +14,7 @@ export function Header() {
 
   const [opened, { toggle }] = useDisclosure()
   const [isVisible, setIsVisible] = useState(false)
-  const { user, logout } = useAuth()
+  const { user, logout, isMobile } = useAuth()
 
   useEffect(() => {
     if (isVisible) {
@@ -29,7 +29,6 @@ export function Header() {
     }
   }, [isVisible])
 
-  const isMobile = useMediaQuery("(max-width: 1199px)")
 
   const logoutUser = () => {
     logout()
@@ -56,17 +55,6 @@ export function Header() {
         />
       </Flex>
       {isVisible && <div style={styles.navContainer}><Navigation /></div>}
-      <Autocomplete
-        style={styles.autocomplete}
-        placeholder="Search by breed"
-        data={[
-          "Vegan Mac and Cheese",
-          "Chickpea Salad",
-          "Peanut Butter Cookies",
-          "Avocado Toast",
-        ]}
-        leftSection={<IconSearch size={16} stroke={1.5} />}
-      />
     </Flex>
   ) : (
     <div style={styles.flex}>

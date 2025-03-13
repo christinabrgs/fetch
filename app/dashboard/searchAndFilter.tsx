@@ -1,10 +1,10 @@
 import { MultiSelect, Select, Popover, ActionIcon, Stack, RangeSlider, Text, Button, SimpleGrid } from "@mantine/core"
 import { IconSearch, IconFilter } from "@tabler/icons-react"
 import { useState, useEffect } from "react"
-import type { DogSearchParams } from "~/data/dogs"
-import { useDogContext } from "~/context/dogProvider"
-import { searchDogs } from "~/dbFunctions/functions"
+import type { DogSearchParams } from "~/utilities/dataTypes/dogs"
+import { useDogContext } from "~/utilities/context/dogProvider"
 import { Flex } from "@mantine/core"
+import { useAuth } from "~/utilities/context/contextProvider"
 
 
 export default function SearchAndFilter() {
@@ -12,6 +12,7 @@ export default function SearchAndFilter() {
     const [opened, setOpened] = useState<boolean>(false)
     const [selectedFilters, setSelectedFilters] = useState<DogSearchParams>({})
     const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc')
+    const {isMobile} = useAuth()
 
     const handleFilterChange = (key: keyof DogSearchParams, value: any) => {
         setSelectedFilters(prev => ({ ...prev, [key]: value }))
@@ -25,17 +26,19 @@ export default function SearchAndFilter() {
     }
 
     return (
-     
+
         <div style={styles.contain}>
-            <Text style={styles.header}> FILTER SEARCH </Text>
             <SimpleGrid
                 cols={{ base: 1, sm: 1, md: 1, lg: 1 }}
                 p={50}
             >
-                 <MultiSelect
+                <Flex align='center' justify='center' direction={isMobile? 'column' : 'row'}>
+                    <Text style={styles.header}> search dogs </Text>
+
+                    <MultiSelect
                         searchable clearable
-                        style={styles.MultiSelect}
-                        placeholder="beagle"
+                        style={isMobile ? styles.mobile : styles.MultiSelect}
+                        placeholder="beagle, pitbull"
                         data={breeds}
                         value={selectedFilters.breeds ?? []}
                         onChange={(value) => handleFilterChange("breeds", value)}
@@ -43,7 +46,7 @@ export default function SearchAndFilter() {
                             <Popover width={200} position="bottom-start" withArrow shadow="md" opened={opened} onChange={setOpened}>
                                 <Popover.Target>
                                     <ActionIcon variant="light" onClick={() => setOpened((o) => !o)}>
-                                        <IconFilter size={16} stroke={1.5} />
+                                        <IconFilter color="#58362a" size={16} stroke={1.5} />
                                     </ActionIcon>
                                 </Popover.Target>
                                 <Popover.Dropdown>
@@ -91,6 +94,15 @@ export default function SearchAndFilter() {
                             </Popover>
                         }
                     />
+                    <Button
+                        onClick={applyFilters}
+                        color="#58362a"
+                        style={isMobile ? styles.mobile : {}}
+                    >
+                        <IconSearch color="#feead2" stroke={5} />
+
+                    </Button>
+                </Flex>
             </ SimpleGrid>
         </div>
     )
@@ -98,13 +110,19 @@ export default function SearchAndFilter() {
 
 
 const styles: Record<string, React.CSSProperties> = {
+    mobile: {
+        width: '100%',
+        marginTop: 8,
+        marginBottom: 8,
+
+    },
     contain: {
         width: '70%',
         background: '#feead2',
         marginBottom: 50
     },
     MultiSelect: {
-        width: "70%",
+        width: "79%",
         paddingRight: 5,
         margin: 'auto'
     },
@@ -119,9 +137,9 @@ const styles: Record<string, React.CSSProperties> = {
 
     },
     header: {
-        fontFamily: 'Arvo',
-        fontSize: 30,
-        paddingTop: 40,
+        fontFamily: 'Avro',
+        fontSize: 26,
+        paddingTop: 0,
         color: '#58362a',
         textAlign: 'center'
     }

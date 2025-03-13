@@ -1,14 +1,21 @@
 import { Flex, Text, Button, Image } from "@mantine/core"
-import React, { useState } from "react"
-import type { Dog } from "~/data/dogs"
+import React, { useState, useEffect } from "react"
+import type { Dog } from "~/utilities/dataTypes/dogs"
 import '~/app.css'
 import { IconHeart, IconHeartFilled } from "@tabler/icons-react"
+import { removeDog, saveDog } from "~/utilities/dbFunctions/functions"
 
 
-
-export default function DogCard({ img, name, age, zip_code, breed }: Dog) {
+export default function DogCard({ img, name, age, zip_code, breed, id }: Dog) {
   const [isClicked, setIsClicked] = useState<boolean>(false);
 
+  const toggleSave = async (id: string) => {
+    if (isClicked) {
+      await removeDog(id)
+    } else {
+      await saveDog(id)
+    }
+  }
 
   return (
     <Flex
@@ -27,15 +34,21 @@ export default function DogCard({ img, name, age, zip_code, breed }: Dog) {
         direction='column'
         style={styles.card}
       >
-        <Flex justify='space-between' align='flex-end' style={styles.description}>
-          <Text style={styles.text}>{name} | {age}</Text>
+        <Flex justify='space-between' align='flex-start' direction='column' style={styles.description}>
+          <Flex align='baseline' justify='space-between' style={{width: '100%'}}>
+            <Text style={styles.text}> {name} </Text>
+            <Text> {age}  year(s) old </Text>
+            </Flex>
           <Text style={[styles.text, {fontSize: 14}]}>{breed}</Text>
         </Flex>
 
         <Button 
         variant='white' 
         color='#58362a'
-        onClick={() => setIsClicked(!isClicked)}
+        onClick={() => {
+          setIsClicked(!isClicked)
+          toggleSave
+        }}
         >
           {isClicked? (<IconHeartFilled color='red' style={{ paddingRight: 5 }} />) : (<IconHeart color='red' style={{ paddingRight: 5 }} /> )} Match Me
         </Button>
@@ -59,6 +72,7 @@ const styles: Record<string, React.CSSProperties> = {
   },
   description: {
     paddingBottom: 15,
+    width: '100%'
   },
   text: {
     fontFamily: 'Arvo',

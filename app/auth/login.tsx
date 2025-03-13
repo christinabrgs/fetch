@@ -2,7 +2,7 @@ import { Container, Text, Input, CloseButton, Button } from "@mantine/core";
 import { IconAt } from '@tabler/icons-react';
 import { useState } from "react";
 import { Form } from "react-router-dom";
-import { useAuth } from "~/context/contextProvider";
+import { useAuth } from "~/utilities/context/contextProvider";
 import { useNavigate, type NavigateFunction } from "react-router-dom";
 import '../app.css';
 

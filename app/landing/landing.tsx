@@ -1,7 +1,7 @@
 import { Container, Text, Flex, Input, CloseButton } from "@mantine/core";
 import { Button } from "@mantine/core";
 import { useNavigate, type NavigateFunction } from "react-router-dom";
-import { useAuth } from "~/context/contextProvider";
+import { useAuth } from "~/utilities/context/contextProvider";
 import { useEffect, useState } from "react";
 import "./dog.scss";
 import { IconDog, IconAt } from "@tabler/icons-react";

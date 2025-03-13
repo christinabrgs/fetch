@@ -3,7 +3,7 @@ import { Grid, Button, Autocomplete, Text, Flex, Burger } from "@mantine/core"
 import { useMediaQuery, useDisclosure } from "@mantine/hooks"
 import { useEffect, useState } from "react"
 import { Navigation } from "./navigation"
-import { useAuth } from "~/context/contextProvider"
+import { useAuth } from "~/utilities/context/contextProvider"
 import { useNavigate } from "react-router"
 import '~/app.css'
 
@@ -40,15 +40,11 @@ export function Footer() {
   return  (
     <div style={styles.flex}>
       <Grid style={styles.grid} justify="space-around">
-        <Grid.Col style={[styles.grid, { justifyContent: "center" }]} span={{ base: 12, md: 6, lg: 2 }}>
+        <Grid.Col style={[styles.grid, { justifyContent: "left" }]} span={{ base: 12, xs: 6, sm: 6, md: 6, lg: 2 }}>
           <IconBone style={{ paddingRight: 5 }} />
           <Text style={styles.text} size='xl' c=''>Fetch</Text>
         </Grid.Col>
-        <Grid.Col style={styles.grid} span={{ base: 12, md: 6, lg: 2 }}>
-        </Grid.Col>
-        <Grid.Col style={[styles.grid, { justifyContent: "space-evenly" }]} span={{ base: 12, md: 6, lg: 6 }}>
-        </Grid.Col>
-        <Grid.Col style={styles.grid} span={{ base: 12, md: 6, lg: 2 }}>
+        <Grid.Col style={[styles.grid, { justifyContent: "right" }]} span={{ base: 12, xs: 6, sm: 6, md: 6, lg: 2 }}>
           <Button variant="transparent" color="white">My Matches</Button>
 
           <Button variant='outline' onClick={logoutUser} color="white"> {user?.name} logout </Button>

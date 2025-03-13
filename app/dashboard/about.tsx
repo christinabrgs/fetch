@@ -2,29 +2,38 @@ import { Text, Flex, Image } from "@mantine/core"
 import Dog from '~/doglarge.png'
 import '~/app.css'
 import { IconBoneFilled } from "@tabler/icons-react"
-
+import { useAuth } from "~/utilities/context/contextProvider"
 
 export default function About() {
 
+    const { isMobile } = useAuth()
 
     return (
         <Flex justify='center'
             style={{
                 background: `#58362a`,
                 width: '100%',
-                padding: 100
+                padding: 60
             }}>
-            <Flex justify='center' direction='row' align='center'
-                style={{
-                    background: `rgba(255, 250, 246, 0)`,
-                    width: '60%',
-                    padding: 40
-                }}>
+            <Flex justify='center' direction={isMobile ? 'column' : 'row'} align='center'
+                style={
+                    isMobile ?
+                        { width: '100%' } :
+                        {
+                            background: `rgba(255, 250, 246, 0)`,
+                            width: '75%',
+                            paddingTop: 50,
+                            paddingBottom: 50
+                        }}
+            >
 
                 <Flex align='end' direction='column'
-                    style={{
-                        width: '60%'
-                    }}>
+                    style={
+                        isMobile ?
+                            { width: '100%' } :
+                            {
+                                width: '60%'
+                            }}>
 
                     <Text style={styles.header}>
                         Why Fetch? <IconBoneFilled color="white" />
@@ -32,11 +41,11 @@ export default function About() {
                     <Text style={styles.description}>
                         Looking for a loyal friend to brighten your days? Our shelter is full of loving dogs eager for a second chance.
                         Whether you're searching for a playful pup or a gentle senior, there's a perfect match waiting just for you.
-                        Adopt today and give a deserving dog the forever home they deserve! 
+                        Adopt today and give a deserving dog the forever home they deserve!
                     </Text>
 
-                    <Flex align='center' direction='row' style={{ height: 120, width: '100%'}}>
-                        <Flex align='start' direction='column' style={{ height: 100, width: '50%'}}>
+                    <Flex align='center' direction='row' style={{ height: 120, width: '100%' }}>
+                        <Flex align='start' direction='column' style={{ height: 100, width: '50%' }}>
                             <Text style={styles.sub}>
                                 10
                             </Text>
@@ -44,7 +53,7 @@ export default function About() {
                                 Years of finding loving homes for dogs.
                             </Text>
                         </Flex>
-                        <Flex align='start' direction='column' style={{ height: 100, width: '50%'}}>
+                        <Flex align='start' direction='column' style={{ height: 100, width: '50%' }}>
                             <Text style={styles.sub}>
                                 9000
                             </Text>
@@ -56,7 +65,7 @@ export default function About() {
 
                 </Flex>
 
-                <Flex justify='center' align='center' style={{ width: '50%' }}>
+                <Flex justify='center' align='center' style={isMobile? {width: '100%', paddingTop: 60} : { width: '30%' }}>
                     <img
                         height={400}
                         src={Dog}

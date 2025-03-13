@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
-import { useAuth } from "~/context/contextProvider";
+import { useAuth } from "~/utilities/context/contextProvider";
 import { Header } from "~/dashboard/header";
 import '~/app.css'
 import { Footer } from "~/dashboard/footer";

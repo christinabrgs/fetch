@@ -1,8 +1,8 @@
 import { Button, Text, Center, Flex, SimpleGrid, Divider } from "@mantine/core";
 import DogCard from "./dogCard";
 import { useEffect, useState } from "react";
-import { useAuth } from "~/context/contextProvider";
-import { useDogContext } from "~/context/dogProvider";
+import { useAuth } from "~/utilities/context/contextProvider";
+import { useDogContext } from "~/utilities/context/dogProvider";
 import Banner from "./banner";
 import Filter from "./filter";
 import { Loader } from '@mantine/core';
