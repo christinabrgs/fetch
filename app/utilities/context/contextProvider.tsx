@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect, type PropsWithChildren } from "react"
-import type { User } from "data/user"
+import type { User } from "../dataTypes/user"
 import type { AuthContext } from "~/utilities/dataTypes/context"
 import { fetchUserData, logoutUser } from "~/utilities/apiFunctions/functions"
 import { useMediaQuery } from "@mantine/hooks"
@@ -25,7 +25,7 @@ export const AuthProvider: React.FC<PropsWithChildren<{}>> = ({ children }) => {
     }, [])
 
 
-    // loginshould  user
+    // login user
     const login = async (name: string, email: string) => {
         const userData = await fetchUserData(name, email)
         console.log('user', name, email)
@@ -41,10 +41,7 @@ export const AuthProvider: React.FC<PropsWithChildren<{}>> = ({ children }) => {
         await logoutUser()
         setUser(null)
 
-    }
-
-    const timeoutUser = setTimeout(logout, 3600000)
-    
+    }    
 
 
 

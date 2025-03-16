@@ -11,9 +11,9 @@ export default function DogCard({ img, name, age, zip_code, breed, id }: Dog) {
 
   const toggleSave = async (id: string) => {
     if (isClicked) {
-      await removeDog(id)
-    } else {
       await saveDog(id)
+    } else {
+      await removeDog(id)
     }
   }
 
@@ -47,7 +47,7 @@ export default function DogCard({ img, name, age, zip_code, breed, id }: Dog) {
         color='#58362a'
         onClick={() => {
           setIsClicked(!isClicked)
-          toggleSave
+          toggleSave(id)
         }}
         >
           {isClicked? (<IconHeartFilled color='red' style={{ paddingRight: 5 }} />) : (<IconHeart color='red' style={{ paddingRight: 5 }} /> )} Match Me

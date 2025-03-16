@@ -4,6 +4,7 @@ import { fetchDogBreeds, fetchDogs, searchDogs } from "~/utilities/apiFunctions/
 import { useEffect } from "react"
 import type { DogSearchParams, Dog } from "~/utilities/dataTypes/dogs"
 import { useAuth } from "./contextProvider"
+import { fetchSaved } from "../dbFunctions/functions"
 
 export const DogContext = createContext<DogContextType | null>(null)
 
@@ -15,15 +16,18 @@ export const DogProvider: React.FC<PropsWithChildren<{}>> = ({ children }) => {
     const [nextQuery, setNextQuery] = useState<DogSearchParams | null>(null)
     const [prevQuery, setPrevQuery] = useState<DogSearchParams | null>(null)
     const [totalResults, setTotalResults] = useState<number>(0)
+    const [savedDogs, setSavedDogs] = useState<string[]>([])
+
 
     useEffect(() => {
         if (user) {
             const fetchDogs = async () => {
                 try {
                     const request = await fetchDogBreeds()
-
+                    const dogs = await fetchSaved()
                     if (request) {
                         setBreeds(request)
+                        setSavedDogs(dogs? dogs : [])
                     }
                 }
                 catch (error) {
@@ -79,7 +83,8 @@ export const DogProvider: React.FC<PropsWithChildren<{}>> = ({ children }) => {
                 goToPreviousPage,
                 nextQuery,
                 prevQuery,
-                totalResults
+                totalResults,
+                savedDogs
             }}>
             {children}
         </DogContext.Provider>

@@ -19,4 +19,5 @@ export interface DogContextType {
     nextQuery: DogSearchParams | null,
     prevQuery: DogSearchParams| null,
     totalResults: number,
+    savedDogs: string[]
 }

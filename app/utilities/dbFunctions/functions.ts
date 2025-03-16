@@ -1,5 +1,5 @@
 
-const baseURL = 'https://localhost:5000/dogs'
+const baseURL = 'http://localhost:5000/dogs'
 
 
 export const fetchSaved = async (): Promise<string[] | null> => {
