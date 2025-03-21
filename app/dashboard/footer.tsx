@@ -68,6 +68,10 @@ const styles: Record<string, React.CSSProperties> = {
     background: '#58362a',
     bottom: 0,
     zIndex: 100,
+    clear: 'both',
+    position: 'relative',
+    marginTop: 50,
+    width: '100%'
   },
   text: {
     fontFamily: 'Arvo',

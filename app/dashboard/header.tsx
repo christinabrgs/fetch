@@ -4,7 +4,7 @@ import { useMediaQuery, useDisclosure } from "@mantine/hooks"
 import { useEffect, useState } from "react"
 import { Navigation } from "./navigation"
 import { useAuth } from "~/utilities/context/contextProvider"
-import { useNavigate } from "react-router"
+import { useNavigate, Link } from "react-router"
 import '~/app.css'
 
 
@@ -41,7 +41,7 @@ export function Header() {
       <Flex direction="row" justify="space-between" align="center" style={{ width: "100%", padding: 20 }}>
         <Flex align="center">
           <IconBone style={{ paddingRight: 5 }} size={30} />
-          <Text>Fetch</Text>
+          <Text><Link to={'/dashboard'} style={{textDecoration: 'none', color: '#59362a'}}> Fetch </Link></Text>
         </Flex>
 
         <Burger
@@ -61,7 +61,7 @@ export function Header() {
       <Grid style={styles.grid} justify="space-around" >
         <Grid.Col style={[styles.grid, { justifyContent: "center" }]} span={{ base: 12, md: 6, lg: 2 }}>
           <IconBone color='#59362a' style={{ paddingRight: 5 }} />
-          <Text style={styles.text} size='xl' c=''>Fetch</Text>
+          <Text style={styles.text} size='xl' c=''><Link to={'/dashboard'} style={{textDecoration: 'none', color: '#59362a'}}>Fetch</Link></Text>
         </Grid.Col>
         <Grid.Col style={styles.grid} span={{ base: 12, md: 6, lg: 2 }}>
         </Grid.Col>
@@ -69,7 +69,7 @@ export function Header() {
           {/* <SearchAndFilter/> */}
         </Grid.Col>
         <Grid.Col style={styles.grid} span={{ base: 12, md: 6, lg: 2 }}>
-          <Button variant="transparent" color="#59362a">My Matches</Button>
+          <Button variant="transparent" color="#59362a"><Link to={'/match'} style={{textDecoration: 'none', color: '#59362a'}}>My Matches</Link></Button>
 
           <Button variant='outline' onClick={logoutUser} color="#59362a"> {user?.name} logout </Button>
         </Grid.Col>
@@ -104,6 +104,7 @@ const styles: Record<string, React.CSSProperties> = {
   },
   navContainer: {
     height: "100vh",
+    width: '100%',
     zIndex: 1,
   },
   autocomplete: {

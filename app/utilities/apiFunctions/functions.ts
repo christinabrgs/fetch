@@ -139,7 +139,9 @@ const getMatch = async (dogIDs: string[]): Promise<string | null> => {
             throw new Error('dog search failure')
         }
 
-        return response.json()
+        const { match } = await response.json()
+
+        return match
 
     }
     catch (error) {

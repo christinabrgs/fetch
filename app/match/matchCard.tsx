@@ -6,7 +6,7 @@ import { IconHeart, IconHeartFilled } from "@tabler/icons-react"
 import { removeDog, saveDog } from "~/utilities/dbFunctions/functions"
 import { useDogContext } from "~/utilities/context/dogProvider"
 
-export default function DogCard({ img, name, age, zip_code, breed, id }: Dog) {
+export default function matchCard({ img, name, age, zip_code, breed, id }: Dog) {
   const [isClicked, setIsClicked] = useState<boolean>(false);
   const { savedDogs } = useDogContext()
 
@@ -52,16 +52,6 @@ export default function DogCard({ img, name, age, zip_code, breed, id }: Dog) {
           </Flex>
           <Text style={[styles.text, { fontSize: 14 }]}>{breed}</Text>
         </Flex>
-        <Button
-          variant='white'
-          color='#58362a'
-          onClick={() => {
-            setIsClicked(!isClicked)
-            toggleSave(id)
-          }}
-        >
-          {isClicked ? (<IconHeartFilled color='red' style={{ paddingRight: 5 }} />) : (<IconHeart color='red' style={{ paddingRight: 5 }} />)} Favorite
-        </Button>
       </Flex>
     </Flex>
   )
@@ -76,7 +66,7 @@ const styles: Record<string, React.CSSProperties> = {
   card: {
     padding: 10,
     width: '100%',
-    background: `rgba(242, 231, 226, 0.85)`,
+    background: ``,
     color: 'black,'
 
   },
@@ -91,6 +81,6 @@ const styles: Record<string, React.CSSProperties> = {
   },
   image: {
     width: '100%',
-    height: 200,
+    height: 500,
   }
 }

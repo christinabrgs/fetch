@@ -27,15 +27,18 @@ export default function Banner() {
                 <Flex
                     justify='center'
                     align='center'
-                    direction='row'
+                    direction='column'
                     style={{
                         background: `rgba(0, 0, 0, 0.3)`,
                         width: '100%',
                         height: '100%'
                     }}
                 >
-                    <Text style={{ fontFamily: 'Sour Gummy', fontWeight: '800', color: 'white', fontSize: 20 }}>
+                    <Text style={{ fontFamily: 'Sour Gummy', fontWeight: '800', color: 'white', fontSize: 28 }}>
                         Let's Find Your Forever Friend
+                    </Text>
+                    <Text style={{ fontFamily: 'Roboto', fontWeight: '400', color: 'white', fontSize: 18 }}>
+                        We help connect good humans to good dogs.
                     </Text>
                 </Flex>
             </Flex>)

@@ -4,11 +4,13 @@ const baseURL = 'http://localhost:5000/dogs'
 
 export const fetchSaved = async (): Promise<string[] | null> => {
     try {
-        const response = await fetch(`${baseURL}/matched`)
+        const response = await fetch(`${baseURL}/matched`, {
+            method: 'GET'
+        })
 
-        const { savedDogs }: { savedDogs: string[] } = await response.json()
+        const data = await response.json()
 
-        return savedDogs
+        return data.matchedDogs
 
     } catch (err) {
         console.error('Error fetching saved dogs', err)
@@ -18,11 +20,16 @@ export const fetchSaved = async (): Promise<string[] | null> => {
 
 export const saveDog = async (dogId: string): Promise<void> => {
     try {
-        await fetch(`${baseURL}/save`, {
+        const response = await fetch(`${baseURL}/save`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ dogId }),
         });
+
+        if (response) {
+            console.log(response)
+        }
+
     } catch (error) {
         console.error("Error saving dog:", error);
     }

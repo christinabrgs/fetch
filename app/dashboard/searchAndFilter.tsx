@@ -12,7 +12,8 @@ export default function SearchAndFilter() {
     const [opened, setOpened] = useState<boolean>(false)
     const [selectedFilters, setSelectedFilters] = useState<DogSearchParams>({})
     const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc')
-    const {isMobile} = useAuth()
+    const [sortField, setSortField] = useState<'breed' | 'name' | 'age'>('breed')
+    const { isMobile } = useAuth()
 
     const handleFilterChange = (key: keyof DogSearchParams, value: any) => {
         setSelectedFilters(prev => ({ ...prev, [key]: value }))
@@ -32,7 +33,7 @@ export default function SearchAndFilter() {
                 cols={{ base: 1, sm: 1, md: 1, lg: 1 }}
                 p={50}
             >
-                <Flex align='center' justify='center' direction={isMobile? 'column' : 'row'}>
+                <Flex align='center' justify='center' direction={isMobile ? 'column' : 'row'}>
                     <Text style={styles.header}> search dogs </Text>
 
                     <MultiSelect
@@ -72,21 +73,34 @@ export default function SearchAndFilter() {
                                         <Select
                                             label="Sort by"
                                             data={[
-                                                { value: "asc", label: "A → Z" },
-                                                { value: "desc", label: "Z → A" }
+                                                { value: "breed", label: "Breed" },
+                                                { value: "name", label: "Name" },
+                                                { value: "age", label: "Age" }
+                                            ]}
+                                            value={sortField}
+                                            onChange={(value) => {
+                                                setSortField(value as 'breed' | 'name' | 'age')
+                                                handleFilterChange("sort", `${value}:${sortOrder}`)
+                                            }}
+                                        />
+
+                                        <Select
+                                            label="Order"
+                                            data={[
+                                                { value: "asc", label: "A → Z | Youngest → Oldest" },
+                                                { value: "desc", label: "Z → A | Oldest → Youngest" },
                                             ]}
                                             value={sortOrder}
                                             onChange={(value) => {
                                                 setSortOrder(value as "asc" | "desc")
-                                                handleFilterChange("sort", `breed:${value as "asc" || "desc"}`)
+                                                handleFilterChange("sort", `${sortField}:${value}`)
                                             }}
                                         />
                                         <Button
                                             onClick={applyFilters}
                                             color="#58362a"
                                         >
-                                            <IconSearch color="#feead2" stroke={5} />
-
+                                            <Text> APPLY </Text>
                                         </Button>
 
                                     </Stack>

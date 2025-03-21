@@ -25,10 +25,13 @@ export const DogProvider: React.FC<PropsWithChildren<{}>> = ({ children }) => {
                 try {
                     const request = await fetchDogBreeds()
                     const dogs = await fetchSaved()
-                    if (request) {
+
+                    if (request && dogs) {
                         setBreeds(request)
-                        setSavedDogs(dogs? dogs : [])
+                        setSavedDogs(dogs)
+
                     }
+
                 }
                 catch (error) {
                     console.error('Error fetching dog breeds', error)
