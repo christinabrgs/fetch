@@ -1,5 +1,5 @@
 const sqlite3 = require('sqlite3').verbose()
-export const db = new sqlite3.Database('./dogs.db')
+export const db = new sqlite3.Database(`${process.env.DATABASE_URL}`)
 
 
 db.serialize(() => {

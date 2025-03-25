@@ -1,8 +1,8 @@
 import type { User } from "../dataTypes/user"
 import type { Dog, DogSearchParams, SearchResponse } from "~/utilities/dataTypes/dogs"
 
-const baseURL = 'https://frontend-take-home-service.fetch.com'
 
+const baseURL = `${process.env.VITE_API_URL}`
 
 const fetchUserData = async (name: string, email: string): Promise<User | null> => {
     try {

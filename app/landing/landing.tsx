@@ -56,7 +56,7 @@ export default function Landing() {
         alignItems: "center",
         height: "100vh",
         flexDirection: 'column',
-        background: '#8C5A46'
+        background: '#573629'
       }}
       fluid
     >
@@ -64,7 +64,7 @@ export default function Landing() {
       <Text
         style={{ color: 'white', marginRight: 10, fontFamily: 'Arvo', fontSize: 40 }}
       >
-        ADOPT A DOG {" "} <IconDog size={40} />
+        ADOPT A DOG {" "} 
 
       </Text>
 
@@ -124,7 +124,7 @@ export default function Landing() {
         // </div>
       ) : (
         <>
-          <div style={{ height: 380, width: '100%', display: 'block', background: '#8C5A46' }}>
+          <div style={{ height: 380, width: '100%', display: 'block', background: '#573629' }}>
             <div className="container">
               <div className="corgi">
                 <div className="head">
