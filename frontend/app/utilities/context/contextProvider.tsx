@@ -12,7 +12,7 @@ export const AuthProvider: React.FC<PropsWithChildren<{}>> = ({ children }) => {
     const [user, setUser] = useState<User | null>(null)
     const [loading, setLoading] = useState<boolean | null>(true)
 
-
+    const navigate = useNavigate()
     const isMobile = useMediaQuery("(max-width: 1199px)")
 
     // grab logged in user
@@ -22,6 +22,7 @@ export const AuthProvider: React.FC<PropsWithChildren<{}>> = ({ children }) => {
             const sessionData = JSON.parse(storedUser)
             if (sessionData.expiryTime && Date.now() > sessionData.expiryTime) {
                 logout(); // Automatically logs out if expired
+                navigate('/')
             } else {
                 setUser(sessionData)
             }
@@ -52,6 +53,7 @@ export const AuthProvider: React.FC<PropsWithChildren<{}>> = ({ children }) => {
         await logoutUser()
         localStorage.removeItem("user")
         setUser(null)
+        navigate('/')
 
     }
 

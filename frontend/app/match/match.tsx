@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { useDogContext } from "~/utilities/context/dogProvider"
 import { Text, Divider } from "@mantine/core"
 import MatchCard from './matchCard'
-import DogCard from "~/dashboard/dogCard"
+import DogCard from "~/components/dogCard"
 import { fetchDogs, getMatch } from "~/utilities/apiFunctions/functions"
 import type { Dog } from "~/utilities/dataTypes/dogs"
 import { SimpleGrid, Flex, Loader, Button, Modal } from "@mantine/core"
@@ -53,7 +53,7 @@ export default function Match() {
         )
             : (
                 <>
-                    <Flex direction='column' style={{ background: '', minHeight: '85vh', maxHeight: '100%' }}>
+                    <Flex direction='column' style={{ background: '', minHeight: '83vh', maxHeight: '100%' }}>
 
                         <Flex justify='space-between' align='center' style={{ width: '70%', margin: 'auto' }}>
                             <Flex
@@ -71,23 +71,36 @@ export default function Match() {
                                 </Link>
                             </Button>
                         </Flex>
-                        <SimpleGrid
-                            cols={{ base: 1, sm: 2, md: 2, lg: 3 }}
-                            pb={0}
-                            pt={40}
-                            style={{ background: '', width: '70%', margin: 'auto' }}
-                        >
-                            {dogs?.map(dog => (
-                                <div key={dog.id}
-                                    style={{
-                                        margin: 10,
-                                        background: `rgba(242, 231, 226, 0.85)`,
-                                        height: 300,
-                                    }}>
-                                    <DogCard {...dog} />
-                                </div>
+
+                        {dogs?.length == 0 ?
+                            <SimpleGrid
+                                cols={{ base: 1, sm: 1, md: 1, lg: 1 }}
+                                pb={0}
+                                pt={0}
+                                style={{ background: '', width: '100%', margin: 'auto' }}
+                            >
+                                <Text size='20' inline={true} className="header" style={{ textAlign: 'center' }}>no dogs saved :(</Text>
+                            </SimpleGrid>
+                            :
+                            dogs?.map(dog => (
+                                <SimpleGrid
+                                    cols={{ base: 1, sm: 2, md: 2, lg: 3 }}
+                                    pb={0}
+                                    pt={40}
+                                    style={{ background: '', width: '70%', margin: 'auto' }}
+                                >
+
+                                    <div key={dog.id}
+                                        style={{
+                                            margin: 10,
+                                            background: `rgba(242, 231, 226, 0.85)`,
+                                            height: 300,
+                                        }}>
+                                        <DogCard {...dog} />
+                                    </div>
+                                </SimpleGrid>
                             ))}
-                        </SimpleGrid>
+
 
                         <Modal opened={opened} onClose={close} withCloseButton={false}>
                             <Text size='30' inline={true} style={styles.title}>MEET YOUR NEW BESTIE</Text>

@@ -1,6 +1,6 @@
 import { MultiSelect, Select, Popover, ActionIcon, Stack, RangeSlider, Text, Button, SimpleGrid } from "@mantine/core"
 import { IconSearch, IconFilter } from "@tabler/icons-react"
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import type { DogSearchParams } from "~/utilities/dataTypes/dogs"
 import { useDogContext } from "~/utilities/context/dogProvider"
 import { Flex } from "@mantine/core"

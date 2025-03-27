@@ -1,8 +1,8 @@
 
-import { Center, Flex, Text } from "@mantine/core";
+import { Flex } from "@mantine/core";
 import SearchAndFilter from "./searchAndFilter";
 import '~/app.css'
-import About from "./about";
+import About from "../dashboard/about";
 
 
 

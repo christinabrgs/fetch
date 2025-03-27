@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { useAuth } from "~/utilities/context/contextProvider";
-import { Header } from "~/dashboard/header";
+import { Header } from "~/components/header";
 import '~/app.css'
-import { Footer } from "~/dashboard/footer";
+import { Footer } from "~/components/footer";
 
 const ProtectedRoute = () => {
   const { user } = useAuth();

@@ -2,7 +2,6 @@ import { Flex, Text, Button, Image } from "@mantine/core"
 import React, { useState, useEffect } from "react"
 import type { Dog } from "~/utilities/dataTypes/dogs"
 import '~/app.css'
-import { IconHeart, IconHeartFilled } from "@tabler/icons-react"
 import { removeDog, saveDog } from "~/utilities/dbFunctions/functions"
 import { useDogContext } from "~/utilities/context/dogProvider"
 

@@ -1,39 +1,15 @@
-import { IconBone, IconSearch } from "@tabler/icons-react"
-import { Grid, Button, Autocomplete, Text, Flex, Burger } from "@mantine/core"
-import { useMediaQuery, useDisclosure } from "@mantine/hooks"
-import { useEffect, useState } from "react"
-import { Navigation } from "./navigation"
+import { IconBone } from "@tabler/icons-react"
+import { Grid, Button, Text } from "@mantine/core"
 import { useAuth } from "~/utilities/context/contextProvider"
-import { useNavigate } from "react-router"
 import '~/app.css'
 
 
 export function Footer() {
 
-  const navigate = useNavigate()
-
-  const [opened, { toggle }] = useDisclosure()
-  const [isVisible, setIsVisible] = useState(false)
   const { user, logout } = useAuth()
-
-  useEffect(() => {
-    if (isVisible) {
-      document.body.style.overflow = "hidden" // Disable scrolling
-    } else {
-      document.body.style.overflow = "" // Re-enable scrolling
-    }
-
-    // Clean up on component unmount
-    return () => {
-      document.body.style.overflow = ""
-    }
-  }, [isVisible])
-
-  const isMobile = useMediaQuery("(max-width: 1199px)")
 
   const logoutUser = () => {
     logout()
-    navigate('/')
   }
 
 

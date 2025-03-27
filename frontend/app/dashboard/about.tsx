@@ -1,4 +1,4 @@
-import { Text, Flex, Image } from "@mantine/core"
+import { Text, Flex} from "@mantine/core"
 import Dog from '~/doglarge.png'
 import '~/app.css'
 import { IconBoneFilled } from "@tabler/icons-react"

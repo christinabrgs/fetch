@@ -1,34 +1,38 @@
 import { Button, Text, Center, Flex, SimpleGrid, Divider } from "@mantine/core";
-import DogCard from "./dogCard";
+import DogCard from "../components/dogCard";
 import { useEffect, useState } from "react";
 import { useAuth } from "~/utilities/context/contextProvider";
 import { useDogContext } from "~/utilities/context/dogProvider";
 import Banner from "./banner";
-import Filter from "./filter";
+import Filter from "../components/filter";
 import { Loader } from '@mantine/core';
 import '~/app.css'
 import { useNavigate } from "react-router";
-import { useFetch } from "~/utilities/hooks";
 
 
 export default function Dashboard() {
 
   const { user } = useAuth()
-  const { 
-    dogs, 
-    searchAndSetDogs, 
-    totalResults, 
-    nextQuery, 
-    prevQuery, 
-    goToNextPage, 
+  const {
+    dogs,
+    searchAndSetDogs,
+    totalResults,
+    nextQuery,
+    prevQuery,
+    goToNextPage,
     goToPreviousPage,
     totalPages,
     pageCount
   } = useDogContext()
   const [isLoading, setIsLoading] = useState<boolean>(true)
-
+  const navigate = useNavigate()
 
   useEffect(() => {
+    if (!user) {
+      navigate('/')
+      return
+    }
+
     const fetchDogs = async () => {
       await searchAndSetDogs({})
       setIsLoading(false)
@@ -36,6 +40,7 @@ export default function Dashboard() {
 
     fetchDogs()
   }, [user])
+
 
 
   return (

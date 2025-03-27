@@ -1,10 +1,9 @@
 
-import { Center, Flex, Text } from "@mantine/core";
+import { Flex, Text } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import { useEffect, useState } from "react";
 import dog from '~/dogarm.png'
 import '~/app.css'
-import { IconDog } from "@tabler/icons-react";
 
 
 export default function Banner() {
