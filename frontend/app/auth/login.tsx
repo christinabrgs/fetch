@@ -3,7 +3,7 @@ import { IconAt } from '@tabler/icons-react';
 import { useState } from "react";
 import { Form } from "react-router-dom";
 import { useAuth } from "~/utilities/context/contextProvider";
-import { useNavigate, type NavigateFunction } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import '../app.css';
 
 export default function Login() {

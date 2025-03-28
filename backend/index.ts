@@ -1,7 +1,8 @@
 import express from "express";
-const cors = require('cors')
 import dogRoutes from './routes/dogRoutes'
 import dotenv from 'dotenv';
+import cors from 'cors';
+
 
 dotenv.config()
 const app = express()

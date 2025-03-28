@@ -1,5 +1,5 @@
 
-const baseURL = 'http://localhost:5000/dogs'
+const baseURL = `${import.meta.env.VITE_DATABASE_URL}` || `${import.meta.env.VITE_RENDER_URL}` 
 
 
 export const fetchSaved = async (): Promise<string[] | null> => {

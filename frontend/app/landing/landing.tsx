@@ -4,7 +4,7 @@ import { useNavigate, type NavigateFunction } from "react-router-dom";
 import { useAuth } from "~/utilities/context/contextProvider";
 import { useEffect, useState } from "react";
 import "./dog.scss";
-import { IconDog, IconAt } from "@tabler/icons-react";
+import { IconAt } from "@tabler/icons-react";
 import { Form } from "react-router-dom";
 
 export default function Landing() {

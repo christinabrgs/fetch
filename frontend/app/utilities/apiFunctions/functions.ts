@@ -2,7 +2,7 @@ import type { User } from "../dataTypes/user"
 import type { Dog, DogSearchParams, SearchResponse } from "~/utilities/dataTypes/dogs"
 
 
-const baseURL = `${import.meta.env.VITE_API_URL}`
+const baseURL = `${import.meta.env.VITE_API_URL}` 
 
 const fetchUserData = async (name: string, email: string): Promise<User | null> => {
     try {
