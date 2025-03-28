@@ -72,34 +72,43 @@ export default function Match() {
                             </Button>
                         </Flex>
 
-                        {dogs?.length == 0 ?
+                        {dogs?.length === 0 ? (
                             <SimpleGrid
                                 cols={{ base: 1, sm: 1, md: 1, lg: 1 }}
                                 pb={0}
                                 pt={0}
                                 style={{ background: '', width: '100%', margin: 'auto' }}
                             >
-                                <Text size='20' inline={true} className="header" style={{ textAlign: 'center' }}>no dogs saved :(</Text>
-                            </SimpleGrid>
-                            :
-                            dogs?.map(dog => (
-                                <SimpleGrid
-                                    cols={{ base: 1, sm: 2, md: 2, lg: 3 }}
-                                    pb={0}
-                                    pt={40}
-                                    style={{ background: '', width: '70%', margin: 'auto' }}
+                                <Text
+                                    size='20'
+                                    inline={true}
+                                    className="header"
+                                    style={{ textAlign: 'center', fontFamily: 'Arvo', color: '#58362a', fontSize: 18 }}
                                 >
-
-                                    <div key={dog.id}
+                                    no dogs saved :(
+                                </Text>
+                            </SimpleGrid>
+                        ) : (
+                            <SimpleGrid
+                                cols={{ base: 1, sm: 2, md: 2, lg: 3 }} // Ensure lg: 3 applies to all items
+                                pb={0}
+                                pt={40}
+                                style={{ background: '', width: '70%', margin: 'auto' }}
+                            >
+                                {dogs?.map(dog => (
+                                    <div
+                                        key={dog.id}
                                         style={{
                                             margin: 10,
                                             background: `rgba(242, 231, 226, 0.85)`,
                                             height: 300,
-                                        }}>
+                                        }}
+                                    >
                                         <DogCard {...dog} />
                                     </div>
-                                </SimpleGrid>
-                            ))}
+                                ))}
+                            </SimpleGrid>
+                        )}
 
 
                         <Modal opened={opened} onClose={close} withCloseButton={false}>

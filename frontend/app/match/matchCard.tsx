@@ -47,7 +47,7 @@ export default function matchCard({ img, name, age, zip_code, breed, id }: Dog) 
         <Flex justify='space-between' align='flex-start' direction='column' style={styles.description}>
           <Flex align='baseline' justify='space-between' style={{ width: '100%' }}>
             <Text style={styles.text}> {name} </Text>
-            <Text> {age}  year(s) old </Text>
+            <Text style={styles.text}> {age}  year(s) old </Text>
           </Flex>
           <Text style={[styles.text, { fontSize: 14 }]}>{breed}</Text>
         </Flex>
