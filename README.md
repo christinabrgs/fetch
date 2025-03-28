@@ -5,7 +5,7 @@ This repository contains a full-stack web application with a **React Router fron
 ## 🚀 Project Setup
 
 ### Prerequisites
-- **Node.js** (Latest LTS version)
+- **Node.js**
 - **npm** or **yarn**
 - **Git**
 
