@@ -1,6 +1,7 @@
-# Full-Stack App
+# Fetch Dog Adoption Challenge
 
-This repository contains a full-stack web application with a **React Router frontend**, **Node.js backend**, and **SQLite database**.
+This repository contains a full-stack web application with a **React Router frontend**, **Node.js backend**, and **SQLite database**. 
+A simple dog adoption app where users can browse a large library of doggies, filter based on breed and age, and save their favorite dogs. The user can then produce a 'match', generated based on their listed favorite dogs.
 
 ## 🚀 Project Setup
 
@@ -66,7 +67,7 @@ npm run dev
 ---
 
 ## 📌 Notes
-- The backend uses **Express.js** and **SQLite**.
+- The backend uses **Express.js** for route handling and **SQLite** database.
 - The frontend is built with **React Router & Vite**.
 - API/ Database URLs are managed via **environment variables**.
 - The session will expire after **1 hour**, requiring users to re-login.
